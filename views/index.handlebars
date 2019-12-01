@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    <ul>
+  {{#each burger}}
+    {{#unless devoured}}
+      {{> cats/cat-block sleep=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
     <h1>Connection has been made</h1>
+    <button>Click Me!</button>
 </body>
 </html>
