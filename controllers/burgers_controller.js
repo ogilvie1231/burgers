@@ -1,5 +1,5 @@
 var app = require("express");
-var burgerJs = require("../models/burgers")
+var burger = require("../models/burgers")
 var router = app.Router()
 
 
@@ -8,40 +8,32 @@ var router = app.Router()
 
 
 router.get("/", function(req, res) {
-    burger.all(function(data) {
+  // res.sendFile(path.join(__dirname, "../views/index.handlebars"));
+  burger.all(function(data) {
       var hbsObject = {
         burgers: data
       };
-      // console.log(hbsObject);
-      console.log('router.get: ', data)
+      console.log(hbsObject);
+      // console.log('router.get: ', data)
       res.render("index", hbsObject);
     });
   });
   
+router.post("/burgers", function(req, res) {
+  burger.create(["burger_name"], [req.body.name], function (result) {
+    res.json({
+      id: result.insertId
+    });
+  });
+});
 
+router.put("/burgers/:id", function (req, res) {
+  console.log('req.body: ', req.body)
+  burger.update("devoured", [req.body.devour], [req.params.id], function (result) {
+    if (result.changedRows === 0) {
+      return res.status(404).end();
+    } return res.sendStatus(200)
+  })
+})
 
-// router.get('/', function(req, res) {
-//     connection.query('SELECT * FROM burgers', function(err, data) {
-//         if (err) {
-//             console.log('Error fetching burgers: ', err)
-//             res.status(400).send(err)
-//         } else {
-//             res.send(data)
-//                 // res.render('index', { burgers: data })
-//         }
-//     })
-// })
-
-// router.post('/burger', function(req, res) {
-//     var newBurger = req.body.burgerName.trim()
-//     connection.query("INSERT INT0 burgers (burger_name) VALUES (?)", [newBurger], function(err, data) {
-//         if (err) {
-//             console.log('Error posting new burger: ', err)
-//             res.status(400).send(err)
-//         } else {
-//             res.send(data)
-//                 // res.render
-//         }
-//     })
-// })
-// module.exports = router
+module.exports = router;
