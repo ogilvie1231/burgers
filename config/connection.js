@@ -8,6 +8,17 @@ var connection = mysql.createConnection({
     database: "burgers_db"
 })
 
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
+    connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: "Cervelo05",
+        database: "burgers_db"
+    });
+};
+
 connection.connect(function(err) {
     if (err) {
         console.error("error connecting: " + err.stack);
@@ -17,4 +28,4 @@ connection.connect(function(err) {
 });
 
 // Export connection for our ORM to use.
-module.exports = connection;  
+module.exports = connection;
