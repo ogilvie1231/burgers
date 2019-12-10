@@ -23,6 +23,17 @@
     {{/unless}}
   {{/each}}
 </ul>
+<h1>Devoured Burgers</h1>
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+    <li>
+      <p>{{this.id}}. {{this.burger_name}}</p><button data-id="{{this.id}}" class="devour">Devour</button>
+    </li>
+      {{!-- {{> cats/cat-block sleep=true}} --}}
+    {{/if}}
+  {{/each}}
+</ul>
 <h2>Add a burger</h2>
 
 <form class="createForm">
