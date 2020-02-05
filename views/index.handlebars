@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-     <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-  {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
-    <script src="index.js"></script>
-</head>
-<body>
-  <h1>Undevoured Burgers</h1>
-    <ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-    <li>
-      <p>{{this.id}}. {{this.burger_name}}</p><button data-id="{{this.id}}" data-devoured="{{this.devoured}}" class="devour">Devour</button>
-    </li>
-      {{!-- {{> cats/cat-block sleep=true}} --}}
-    {{/unless}}
-  {{/each}}
-</ul>
-<h1>Devoured Burgers</h1>
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-    <li>
-      <p>{{this.id}}. {{this.burger_name}}</p><button data-id="{{this.id}}" data-devoured="{{this.devoured}}" class="devour">Order Again</button>
-    </li>
-      {{!-- {{> cats/cat-block sleep=true}} --}}
-    {{/if}}
-  {{/each}}
-</ul>
-<h2>Add a burger</h2>
 
-<form class="createForm">
-  <div class="formGroup">
-    <label for="burgerName">Burger Name: </label>
-    <input type="text" name="name" id="burg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Undevoured Burgers</h1>
+
+    {{#each burgers}}
+    {{#unless devoured}}
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Burger Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{this.id}}. {{this.burger_name}}</h6>
+        <button class="btn btn-primary devour" data-id="{{this.id}}" data-devoured="{{this.devoured}}">Devour</button>
+
+      </div>
+    </div>
+
+    {{!-- <li>
+      <p>{{this.id}}. {{this.burger_name}}</p><button data-id="{{this.id}}" data-devoured="{{this.devoured}}"
+        class="devour">Devour</button>
+    </li> --}}
+    {{!-- {{> cats/cat-block sleep=true}} --}}
+    {{/unless}}
+    {{/each}}
   </div>
-  <button type="submit">Add Burger</button>
-</form>
+
+  <div class="container">
+    <h1>Devoured Burgers</h1>
+
+    {{#each burgers}}
+    {{#if devoured}}
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Burger Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{this.id}}. {{this.burger_name}}</h6>
+        <button class="btn btn-primary devour" data-id="{{this.id}}" data-devoured="{{this.devoured}}">Order
+          Again</button>
+
+      </div>
+    </div>
+
+    {{!-- <li>
+      <p>{{this.id}}. {{this.burger_name}}</p><button data-id="{{this.id}}" data-devoured="{{this.devoured}}"
+        class="devour">Order Again</button>
+    </li> --}}
+    {{!-- {{> cats/cat-block sleep=true}} --}}
+    {{/if}}
+    {{/each}}
+  </div>
+
+  <div class="container">
+    <div class="card" style="width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title">Add a burger</h5>
+        {{!-- <div class="formGroup"> --}}
+        <form class="createForm container">
+          <label for="burgerName">Burger Name: </label>
+          <input class="form-control form-control-lg" placeholder="Add a Burger" type="text" name="name" id="burg">
+          {{!-- </div> --}}
+          <button class="btn btn-primary" type="submit">Add Burger</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
 </body>
-</html>  
+
+</html>
