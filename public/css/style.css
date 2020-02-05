@@ -1,0 +1,12 @@
+body {
+    /* height: 1000px; */
+    background: linear-gradient(red, yellow);
+    background-repeat: no-repeat;
+}
+.card {
+    margin-top: 2%;
+}
+
+.form-control {
+    margin-bottom: 2%;
+}
