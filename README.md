@@ -14,4 +14,5 @@
     <li>Express</li>
     <li>Handlebars.js</li>
     <li>Node</li>
+    <li>Hosted on Heroku</li>
 </ul>
