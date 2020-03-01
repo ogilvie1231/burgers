@@ -13,68 +13,71 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1>Undevoured Burgers</h1>
-
-    {{#each burgers}}
-    {{#unless devoured}}
-
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Burger Name</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{this.id}}. {{this.burger_name}}</h6>
-        <button class="btn btn-primary devour" data-id="{{this.id}}" data-devoured="{{this.devoured}}">Devour</button>
-
+  <div class="jumbotron">
+    <h1 class="display-4 text-center">Welcome to the Burger Exercise</h1>
+    <p class="lead text-center">A database of burgers both devoured and undevoured</p>
+    <hr class="my-4">
+    <p class="text-center">Add a burger below. You can then choose to devour the burger. Once a burger has been devoured
+      you can order it again!</p>
+    <p class="lead">
+      <div class="container addOne">
+        <div>
+          <div class="card-body">
+            {{!-- <div class="formGroup"> --}}
+            <form class="createForm container">
+              <label for="burgerName"></label>
+              <input class="form-control form-control-lg" placeholder="Add a Burger" type="text" name="name" id="burg">
+              {{!-- </div> --}}
+              <button class="btn btn-primary" type="submit">Add Burger</button>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-
-    {{!-- <li>
-      <p>{{this.id}}. {{this.burger_name}}</p><button data-id="{{this.id}}" data-devoured="{{this.devoured}}"
-        class="devour">Devour</button>
-    </li> --}}
-    {{!-- {{> cats/cat-block sleep=true}} --}}
-    {{/unless}}
-    {{/each}}
+    </p>
   </div>
+  <div class="container orderSection">
+    <div class="row">
+      <div class="container unDev col-md">
+        <h1 class="">Undevoured Burgers</h1>
 
-  <div class="container">
-    <h1>Devoured Burgers</h1>
+        {{#each burgers}}
+        {{#unless devoured}}
 
-    {{#each burgers}}
-    {{#if devoured}}
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Burger Name</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{this.id}}. {{this.burger_name}}</h6>
+            <button class="btn btn-primary devour" data-id="{{this.id}}"
+              data-devoured="{{this.devoured}}">Devour</button>
 
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Burger Name</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{this.id}}. {{this.burger_name}}</h6>
-        <button class="btn btn-primary devour" data-id="{{this.id}}" data-devoured="{{this.devoured}}">Order
-          Again</button>
+          </div>
+        </div>
 
+        {{/unless}}
+        {{/each}}
       </div>
-    </div>
 
-    {{!-- <li>
-      <p>{{this.id}}. {{this.burger_name}}</p><button data-id="{{this.id}}" data-devoured="{{this.devoured}}"
-        class="devour">Order Again</button>
-    </li> --}}
-    {{!-- {{> cats/cat-block sleep=true}} --}}
-    {{/if}}
-    {{/each}}
-  </div>
+      <div class="container dev col-md">
+        <h1>Devoured Burgers</h1>
 
-  <div class="container">
-    <div class="card" style="width: 18rem;">
+        {{#each burgers}}
+        {{#if devoured}}
 
-      <div class="card-body">
-        <h5 class="card-title">Add a burger</h5>
-        {{!-- <div class="formGroup"> --}}
-        <form class="createForm container">
-          <label for="burgerName">Burger Name: </label>
-          <input class="form-control form-control-lg" placeholder="Add a Burger" type="text" name="name" id="burg">
-          {{!-- </div> --}}
-          <button class="btn btn-primary" type="submit">Add Burger</button>
-        </form>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Burger Name</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{this.id}}. {{this.burger_name}}</h6>
+            <button class="btn btn-primary devour" data-id="{{this.id}}" data-devoured="{{this.devoured}}">Order
+              Again</button>
+
+          </div>
+        </div>
+
+        {{/if}}
+        {{/each}}
       </div>
+
+
     </div>
   </div>
 
